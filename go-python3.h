@@ -1,5 +1,7 @@
 #include "Python.h"
 
+#include "frameobject.h"
+#include "marshal.h"
 /* stdlib */
 #include <stdlib.h>
 #include <string.h>
