@@ -2,8 +2,6 @@ package main
 
 import "C"
 import (
-	"fmt"
-
 	cgo_python3 "github.com/chiachan163/cgo-python3"
 )
 
@@ -16,13 +14,13 @@ func init() {
 }
 
 func main() {
-	fmt.Println(cgo_python3.ShowVersion())
+	//fmt.Println(cgo_python3.ShowVersion())
 
 	//input := os.Args[1]
-	//fooModule := cgo_python.PyImport_ImportModule("foo")
-	//if fooModule == nil {
-	//	panic("Error importing module!")
-	//}
+	fooModule := cgo_python3.PyImport_ImportModule("foo.py")
+	if fooModule == nil {
+		panic("Error importing module!")
+	}
 	//
 	//helloFunc := fooModule.GetAttrString("hello_recall")
 	//if helloFunc == nil {

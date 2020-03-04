@@ -1,8 +1,12 @@
 #include "Python.h"
 
-/* ---- test ----*/
-extern PyObject* PyInit_gopkg();
-extern PyObject* Py_gopkg_sum(PyObject *, PyObject *);
+/* stdlib */
+#include <stdlib.h>
+#include <string.h>
 
-static int cgo_PyArg_ParseTuple_ii(PyObject *arg, int *a, int *b);
-static PyObject* cgo_PyInit_gopkg(void);
+/* ---- none ----*/
+PyObject* _gopy_pynone(void);
+
+/* ---- object ----*/
+PyObject* _gopy_pyfalse(void);
+PyObject* _gopy_pytrue(void);
