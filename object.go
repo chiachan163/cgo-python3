@@ -175,7 +175,7 @@ func (self *PyObject) CallFunction(args ...interface{}) *PyObject {
 		pyfmt,
 		unsafe.Pointer(&cargs[0]),
 	)
-
+	fmt.Println("o", o)
 	return togo(o)
 
 }

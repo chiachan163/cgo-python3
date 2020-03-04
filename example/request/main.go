@@ -33,4 +33,6 @@ func main() {
 	if rec != nil {
 		fmt.Println(cgo_python3.PyBytes_AsString(rec))
 	}
+
+	//helloFunc.CallFunction()
 }
