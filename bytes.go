@@ -2,7 +2,10 @@ package cgo_python3
 
 // #include "go-python3.h"
 import "C"
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // PyObject* PyBytes_FromString(const char *v)
 // Return value: New reference.
@@ -22,7 +25,10 @@ func PyBytes_FromString(v string) *PyObject {
 // PyBytes_FromStringAndSize(NULL, size). It must not be deallocated. If o is not a
 // bytes object at all, PyBytes_AsString() returns NULL and raises TypeError.
 func PyBytes_AsString(self *PyObject) string {
+
 	c_str := C.PyBytes_AsString(self.ptr)
+	//c_str := C.PyUnicode_FromObject(self.ptr)
+	fmt.Println(C.PyUnicode_FromObject(self.ptr))
 	// we dont own c_str...
 	//defer C.free(unsafe.Pointer(c_str))
 	return C.GoString(c_str)

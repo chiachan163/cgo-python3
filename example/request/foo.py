@@ -1,5 +1,5 @@
-def hello(varl):
-    print( "hello" + varl)
+def hello():
+    print( "hello" )
     return
 
 def hello_recall(val):

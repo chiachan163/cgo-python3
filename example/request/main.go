@@ -24,15 +24,15 @@ func main() {
 		panic("Error importing module!")
 	}
 
+	//helloFunc := fooModule.GetAttrString("hello")
 	helloFunc := fooModule.GetAttrString("hello_recall")
 	if helloFunc == nil {
 		panic("Error importing function!")
 	}
-
-	rec := helloFunc.CallFunctionObjArgs("0", cgo_python3.PyBytes_FromString(input))
+	//rec := fooModule.CallMethod("hello_recall", cgo_python3.Py_BuildValue("s", "foo"))
+	rec := helloFunc.CallFunctionObjArgs("0", cgo_python3.Py_BuildValue("(s)", input))
 	if rec != nil {
 		fmt.Println(cgo_python3.PyBytes_AsString(rec))
 	}
-
 	//helloFunc.CallFunction()
 }
