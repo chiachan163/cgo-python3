@@ -18,3 +18,5 @@ PyObject* _gopy_pytrue(void);
 PyObject* _gopy_PyObject_CallFunction(PyObject *o, int len, char* types, void *args);
 PyObject* _gopy_PyObject_CallMethod(PyObject *o, char *method, int len, char* pyfmt, void *cargs);
 PyObject* _gopy_Py_BuildValue(char* format,int len, void *cargs);
+
+/* ---- arg ---- */

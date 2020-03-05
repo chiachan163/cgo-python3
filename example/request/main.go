@@ -29,10 +29,10 @@ func main() {
 	if helloFunc == nil {
 		panic("Error importing function!")
 	}
-	//rec := fooModule.CallMethod("hello_recall", cgo_python3.Py_BuildValue("s", "foo"))
 	rec := helloFunc.CallFunctionObjArgs("0", cgo_python3.Py_BuildValue("(s)", input))
 	if rec != nil {
 		fmt.Println(cgo_python3.PyBytes_AsString(rec))
 	}
 	//helloFunc.CallFunction()
+	cgo_python3.Finalize()
 }

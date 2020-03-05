@@ -168,3 +168,13 @@ func Py_BuildValue(format string, args ...interface{}) *PyObject {
 	o := C._gopy_Py_BuildValue(C.CString(format), C.int(len(args)), unsafe.Pointer(&cargs[0]))
 	return togo(o)
 }
+
+// int PyArg_Parse(PyObject *args, const char *format, ...)
+// Function used to deconstruct the argument lists of “old-style” functions — these are functions
+// which use the METH_OLDARGS parameter parsing method, which has been removed in Python 3. This
+// is not recommended for use in parameter parsing in new code, and most code in the standard
+// interpreter has been modified to no longer use this for that purpose. It does remain a convenient
+// way to decompose other tuples, however, and may continue to be used for that purpose.
+func PyArg_Parse(ptr *PyObject, format string, args ...interface{}) int {
+	return 0
+}

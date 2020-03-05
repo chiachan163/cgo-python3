@@ -3,7 +3,6 @@ package cgo_python3
 // #include "go-python3.h"
 import "C"
 import (
-	"fmt"
 	"unsafe"
 )
 
@@ -26,10 +25,17 @@ func PyBytes_FromString(v string) *PyObject {
 // bytes object at all, PyBytes_AsString() returns NULL and raises TypeError.
 func PyBytes_AsString(self *PyObject) string {
 
-	c_str := C.PyBytes_AsString(self.ptr)
-	//c_str := C.PyUnicode_FromObject(self.ptr)
-	fmt.Println(C.PyUnicode_FromObject(self.ptr))
-	// we dont own c_str...
-	//defer C.free(unsafe.Pointer(c_str))
-	return C.GoString(c_str)
+	unicodePystr := C.PyUnicode_FromObject(self.ptr)
+	if unicodePystr == nil {
+		panic("PyUnicode_FromObject error")
+	}
+	bytePystr := C.PyUnicode_AsASCIIString(unicodePystr)
+	if bytePystr == nil {
+		panic("PyUnicode_AsASCIIString error")
+	}
+	typePystr := C.PyBytes_AsString(bytePystr)
+	if typePystr == nil {
+		panic("PyBytes_AsString error")
+	}
+	return C.GoString(typePystr)
 }
